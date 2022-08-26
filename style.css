@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(to right top, #feadcd,#5bd2f0);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+header{
+    width: 100vw;
+    height: calc(100vh/12);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+header .title h1{
+    color: #e02c9e;
+    font-family: "Goudy Old Style";
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container h2{
+    color: #786cf8;
+    font-family: "Goudy Old Style";
+}
+.videoScreen{
+    background-color: black;
+    width: calc(100vw*0.9);
+    height: calc(100vh*0.7);
+}
+.button{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0px;
+}
+.startButton{
+    width: 200px;
+    height: 40px;
+    margin: 0 4rem;
+    border-radius: 5px;
+    font-family: 'Trocchi';
+    color:black;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.stopButton{
+    width: 200px;
+    height: 40px;
+    margin: 0 4rem;
+    border-radius: 5px;
+    font-family: 'Trocchi';
+    color:black;
+    font-size: 1rem;
+    font-weight: bold;
+}   
+.recordedVideo{
+    background-color: black;
+    width: calc(100vw*0.9);
+    height: calc(100vh*0.7);
+}
+.dlButton button{
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+}
+.dlButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0px;
+}
+.dlButton button a{
+    text-decoration: none;
+    font-family: 'Trocchi';
+    color:black;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+footer{
+    flex: 1;
+    display: flex;
+    background-color: transparent;
+    border-top: solid black 2px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 3rem;
+}
+footer a{
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Trocchi';
+    color: black;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    align-items: center;
+}
