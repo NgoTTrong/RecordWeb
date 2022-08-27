@@ -33,9 +33,47 @@ header .title h1{
     color: #786cf8;
     font-family: "Goudy Old Style";
 }
+.box{
+    display:flex;
+}
+.box .choose{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 1rem;
+    margin-left: 2rem;
+}
+.box .choose input[type="checkbox"] {
+    width: 2em;
+    height: 2em;
+}
+input[type="checkbox"]::before {
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+.box .choose .audioChoose{
+    margin-bottom: 3rem;
+    display: flex;
+}
+.box .choose .voiceChoose{
+    display: flex;
+}
+.box .choose{
+    margin-bottom: 3rem;    
+}
+.box .choose label{
+    color: #8b23c7;
+    font-family: "Goudy Old Style";
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 1rem;    
+}
+.box .recording-video-wrap{
+    margin-left: 2rem;
+}
 .videoScreen{
     background-color: black;
-    width: calc(100vw*0.9);
+    width: calc(100vw*0.75);
     height: calc(100vh*0.7);
 }
 .button{

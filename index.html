@@ -16,14 +16,27 @@
     </header>
 
     <div class="container">
-        <div class="recording-video-wrap">
-            <h2>Recording Screen</h2>
-            <video src="" class="videoScreen" muted></video>
-            <div class="button">
-                <button class="startButton">Start Recording</button>
-                <button class="stopButton" disabled>Stop Recording</button>
+        <div class="box">
+            <div class="choose">
+                <div class="audioChoose">
+                    <input type="checkbox" id="audio" name="audio" value="audio" checked>
+                    <label for="audio">Record with audio</label>
+                </div>
+                <div class="voiceChoose">
+                    <input type="checkbox" id="voice" name="voice" value="voice">
+                    <label for="voice">Record with voice</label>
+                </div>
+            </div>
+            <div class="recording-video-wrap">
+                <h2>Recording Screen</h2>
+                <video src="" class="videoScreen" muted></video>
+                <div class="button">
+                    <button class="startButton">Start Recording</button>
+                    <button class="stopButton" disabled>Stop Recording</button>
+                </div>
             </div>
         </div>
+        
 
         <div class="recorded-video-wrap" hidden>
             <h2>Recorded Video</h2>

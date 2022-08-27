@@ -5,19 +5,38 @@ let startButton = null;
 let stopButton = null;
 let downloadButton = null;
 let recordedVideo = null;
+let checkVoice = null;
+let checkAudio = null;
+let audio = null;
+let mixedStream = null;
+
+let constraints = {
+    video: { 
+        mediaSource: "screen" 
+    }
+}
 
 async function setUp(){
-    try{
-        stream = await navigator.mediaDevices.getDisplayMedia({
-            video: { 
-                mediaSource: "screen" 
-            },
-            audio: {
+    if (checkAudio.checked) {
+        console.log("checked audio");
+        constraints["audio"] = {
+            echoCancellation: true,
+            noiseSuppression: true,
+            sampleRate: 44100,
+        }
+    }
+    if (checkVoice.checked){
+        console.log("checked voice");
+        audio = await navigator.mediaDevices.getUserMedia({
+			audio: {
 				echoCancellation: true,
 				noiseSuppression: true,
 				sampleRate: 44100,
-			}
-        });
+			},
+		});
+    }
+    try{
+        stream = await navigator.mediaDevices.getDisplayMedia(constraints);
         playVideo();
     }catch(e){
         console.error(e);
@@ -37,7 +56,12 @@ function playVideo(){
 async function startRecord(){
     await setUp();
     if (stream){
-        recorder = new MediaRecorder(stream);
+        if (audio){
+            mixedStream = new MediaStream([...stream.getTracks(), ...audio.getTracks()]);
+		    recorder = new MediaRecorder(mixedStream);
+        }else{
+            recorder = new MediaRecorder(stream);
+        }
         recorder.ondataavailable = handleDataAvailable;
         recorder.onstop = handleStop;
         recorder.start(200);
@@ -79,11 +103,13 @@ function handleStop(e){
     stream.getTracks().forEach((track) => track.stop());
 }
 
-window.addEventListener('load',()=>{
+window.addEventListener('load',async ()=>{
     startButton = document.querySelector('.startButton');
     stopButton = document.querySelector('.stopButton');
     downloadButton = document.querySelector('.downloadButton');
     recordedVideo = document.querySelector('.recordedVideo');
+    checkAudio = document.querySelector('#audio');
+    checkVoice = document.querySelector('#voice'); 
 
     startButton.addEventListener('click',startRecord);
     stopButton.addEventListener('click',stopRecord);
